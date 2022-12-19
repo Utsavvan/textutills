@@ -25,7 +25,7 @@ function TextForm(props) {
 
     return (
         <React.Fragment>
-            <div className="container my-3">
+            <div className="container my-3" style={{color: props.mode==='dark' ? 'white' : 'black'}}>
                 <h1>{props.heading}</h1>
                 <div className="form-group">
                     <label htmlFor="exampleFormControlTextarea1">Example textarea</label>
@@ -36,13 +36,13 @@ function TextForm(props) {
                 <button onClick={handleClickCl} className="btn btn-primary mt-3 mx-3">Clear</button>
                 <button onClick={handleClickCopyText} className="btn btn-primary mt-3 mx-3">Copy Text</button>
             </div>
-            <div className="container">
+            <div className="container" style={{color: props.mode==='dark' ? 'white' : 'black'}}>
                 <h1>This Text has {text.split(' ').length} Words And {text.length} Characters</h1>
                 <p>Estimated Reading time For this is {0.005 * text.split(' ').length} Minutes </p>
             </div>
-            <div className="container">
+            <div className="container" style={{color: props.mode==='dark' ? 'white' : 'black'}}>
                 <h3>Preview</h3>
-                <p>{text}</p>
+                <p>{text.length===0?"Enter something above textbox":text}</p>
             </div>
         </React.Fragment>
     )

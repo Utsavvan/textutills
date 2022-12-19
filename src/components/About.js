@@ -11,7 +11,7 @@ function About() {
     const [btnText,setbtnText] = useState('Enable Dark Mode')
 
     const setColorMode = () => {
-        if (myStyle.backgroundColor == 'white') {
+        if (myStyle.backgroundColor === 'white') {
             setmyStyle({
                 color: 'white',
                 backgroundColor: 'black',

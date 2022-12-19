@@ -4,7 +4,7 @@ import propTypes from 'prop-types'
 // if we passed props in react component than we use "props" or any other value as a parameter to our function 
 function navbar(props) {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
             <div className="container-fluid">
                 {/* we can access values of props by {functionParameterValue.propKey} ,like here we passed function parameter as "props" and 
                 we passed prop key in components as "title" so we are using {props.title}*/}
@@ -21,10 +21,14 @@ function navbar(props) {
                             <a className="nav-link" href="/">Link</a>
                         </li>
                     </ul>
-                    <form className="d-flex">
+                    {/* <form className="d-flex">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                         <button className="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+                    </form> */}
+                    <div className={`form-check form-switch text-${props.mode === 'light'? 'dark' : 'light'}`}>
+                        <input className="form-check-input" onClick={props.switchClick} type="checkbox" id="flexSwitchCheckDefault" />
+                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable {props.mode === 'light'? 'dark' : 'light'} Mode</label>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -35,16 +39,16 @@ function navbar(props) {
 
 // we are using "propTypes" method for adding type validation to props 
 
-navbar.propTypes ={
+navbar.propTypes = {
     // we are using "isRequired" method to put requirment validation to props so if prop value is blank ,it will throw error. 
-   title : propTypes.string.isRequired,
-   menu1 : propTypes.string
+    title: propTypes.string.isRequired,
+    menu1: propTypes.string
 }
 
 // we are using "defaultProps" method for adding default property values incase we didn't add props values. 
 
 navbar.defaultProps = {
-    title : "Put Title"
+    title: "Put Title"
 }
 
 export default navbar
