@@ -5,12 +5,15 @@ function TextForm(props) {
 
     const handleClickUp = () => {
         setText(text.toUpperCase())
+        props.showalert('success','All text is Uppercase')
     }
     const handleClickLw = () => {
         setText(text.toLowerCase())
+        props.showalert('success','All text is Lowercase')
     }
     const handleClickCl = () => {
         setText("")
+        props.showalert('warning','All text is cleared')
     }
     const onChanged = (event) => {
         setText(event.target.value);
@@ -21,6 +24,7 @@ function TextForm(props) {
 		text.select()
 		// text.setSelectionRange(0,9999)
         navigator.clipboard.writeText(text.value)
+        props.showalert('success','All text is copied to clipboard')
     }
 
     return (
@@ -29,7 +33,7 @@ function TextForm(props) {
                 <h1>{props.heading}</h1>
                 <div className="form-group">
                     <label htmlFor="exampleFormControlTextarea1">Example textarea</label>
-                    <textarea className="form-control" value={text} onChange={onChanged} id="textbox" rows="8"></textarea>
+                    <textarea style={{backgroundColor: props.mode==='dark' ? '#091828' : 'white' , color: props.mode==='dark' ? 'white' : 'black'}} className="form-control" value={text} onChange={onChanged} id="textbox" rows="8"></textarea>
                 </div>
                 <button onClick={handleClickUp} className="btn btn-primary mt-3 mx-3">Uppercase</button>
                 <button onClick={handleClickLw} className="btn btn-primary mt-3 mx-3">Lowercase</button>
@@ -42,7 +46,7 @@ function TextForm(props) {
             </div>
             <div className="container" style={{color: props.mode==='dark' ? 'white' : 'black'}}>
                 <h3>Preview</h3>
-                <p>{text.length===0?"Enter something above textbox":text}</p>
+                <p>{text.length===0?"Enter something above textarea":text}</p>
             </div>
         </React.Fragment>
     )
