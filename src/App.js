@@ -25,10 +25,12 @@ function App() {
       setMode('dark')
       document.body.style.backgroundColor = "#001e3c"
       showAlert('success',"Dark mode is enabled")
+      document.title = 'Textutils - Dark Mode'
     } else {
       setMode('light')
       document.body.style.backgroundColor = "white"
       showAlert('success',"Light mode is enabled")
+      document.title = 'Textutils - Light Mode'
     }
   }
 

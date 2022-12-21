@@ -3,6 +3,7 @@ import propTypes from 'prop-types'
 
 // if we passed props in react component than we use "props" or any other value as a parameter to our function 
 function navbar(props) {
+    
     return (
         <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
             <div className="container-fluid">
